@@ -1,6 +1,14 @@
-var fs=require('fs')
-fs.mkdir('stuff', function(){
-    fs.readFile('readMe.txt','utf8',function(err,data){
-    fs.writeFile('./stuff/writeMe.txt',data,function(err){console.log(err)})
-})
-})
+const http = require('http')
+const hostname = '127.0.0.1';
+const port = 3008;
+
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Hello World\n');
+});
+
+server.listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/`);
+});
+server.close()
