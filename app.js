@@ -1,5 +1,6 @@
-let stuff = require('./stuff')
-console.log(stuff.counter(['jinen','ab']))
-console.log(stuff.adder(0,0))
-console.log(stuff.pi)
-
+var fs=require('fs')
+fs.mkdir('stuff', function(){
+    fs.readFile('readMe.txt','utf8',function(err,data){
+    fs.writeFile('./stuff/writeMe.txt',data,function(err){console.log(err)})
+})
+})
