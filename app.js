@@ -1,26 +1,12 @@
-let http = require('http')
-let fs = require('fs')
-let server = http.createServer(function(req, res) {
-    console.log('request was made ' + req.url)
-
-    if (req.url === '/home' || req.url === '/') {
-        res.writeHead(200, { 'Content-Type': 'text/html' })
-        fs.createReadStream(__dirname + '/index.html').pipe(res)
-
-    } else if (req.url === '/contact') {
-        res.writeHead(200, { 'Content-Type': 'text/html' })
-        fs.createReadStream(__dirname + '/contact.html').pipe(res)
-    } else if (req.url === '/api/ninjas') {
-        let ninjas = [{ name: 'ryu', age: '29' }, { name: 'jinen', age: 22 }]
-        res.writeHead(200, { 'Content-Type': 'application/json' })
-        res.end(JSON.stringify(ninjas))
-
-
-    } else {
-        res.writeHead(404, { 'Content-Type': 'text/html' })
-        fs.createReadStream(__dirname + '/404.html').pipe(res)
-
-    }
+var express = require('express')
+var app = express()
+app.get('/', function(req, res) {
+    res.send('this is the home page')
 })
-
-server.listen(3008, '127.0.0.1')
+app.get('/contact', function(req, res) {
+    res.send('this is the contact page')
+})
+app.get('/profile/:id', function(req, res) {
+    res.end("Your id is " + " " + req.params.id)
+})
+app.listen(3008)
