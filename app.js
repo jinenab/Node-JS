@@ -1,12 +1,14 @@
 var express = require('express')
 var app = express()
+app.set('view engine', 'ejs')
 app.get('/', function(req, res) {
-    res.send('this is the home page')
+    res.sendFile(__dirname + '/index.html')
 })
 app.get('/contact', function(req, res) {
-    res.send('this is the contact page')
+    res.sendFile(__dirname + '/contact.html')
 })
 app.get('/profile/:id', function(req, res) {
-    res.end("Your id is " + " " + req.params.id)
+    var data = { age: 22, job: "developper", hobbies: ['sport', 'music'] }
+    res.render('profile', { person: req.params.id, data })
 })
 app.listen(3008)
