@@ -31,21 +31,22 @@
 </head>
 
 <body>
-    <h1>Welcome to the profile of
-        <%= person%>
-    </h1>
-    <strong>Age : <strong> <%= data.age %> </strong> </strong>
-    <strong>Job: <strong> <%= data.job %> </strong> </strong>
-    <h2>
-        <ul>
-            <% data.hobbies.forEach((function(item){
+    <% include partials/nav.ejs %>
+        <h1>Welcome to the profile of
+            <%= person %>
+        </h1>
+        <strong>Age : <strong> <%= data.age %> </strong> </strong>
+        <strong>Job: <strong> <%= data.job %> </strong> </strong>
+        <h2>
+            <ul>
+                <% data.hobbies.forEach((function(item){
                 %>
-                <li>
-                    <%= item %>
-                </li>
-                <% }))%>
-        </ul>
-    </h2>
+                    <li>
+                        <%= item %>
+                    </li>
+                    <% }))%>
+            </ul>
+        </h2>
 </body>
 
 </html>
