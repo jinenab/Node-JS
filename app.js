@@ -13,7 +13,8 @@ let server = http.createServer(function(req, res) {
     } else if (req.url === '/api/ninjas') {
         let ninjas = [{ name: 'ryu', age: '29' }, { name: 'jinen', age: 22 }]
         res.writeHead(200, { 'Content-Type': 'application/json' })
-        JSON.stringify(ninjas)
+        res.end(JSON.stringify(ninjas))
+
 
     } else {
         res.writeHead(404, { 'Content-Type': 'text/html' })
